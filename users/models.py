@@ -21,14 +21,6 @@ class Customer(models.Model):
     marital_status = models.CharField(max_length=2,
                                       choices=marital_status_choices,
                                       default=BLANK)
-    vacation_preference_choices = (
-        ('Beach','Beach'),
-        ('Nature', 'Nature'),
-        ('Adventure', 'Adventure'),
-        ('Inspiring', 'Inspiring'),
-    )
-    preferred_type_of_vacations = models.CharField(max_length=9, choices=vacation_preference_choices)
-
     def __str__(self):
         return self.user.username
 
