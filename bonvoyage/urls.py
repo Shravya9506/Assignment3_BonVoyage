@@ -4,7 +4,7 @@ from django.conf import settings
 from bonvoyage import views
 
 urlpatterns = [
-    path('bonvoyage/home/', views.home, name='home')
+    path('', views.home, name='home')
 ]
 
 if settings.DEBUG:
