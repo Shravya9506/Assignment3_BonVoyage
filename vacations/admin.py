@@ -41,10 +41,10 @@ class VacationAdmin(admin.ModelAdmin):
     inlines = [
         TripDetailsInline,
     ]
-    exclude = ("slug","resized_image",)
+    exclude = ("slug",)
     def get_readonly_fields(self, request, obj=None):
         if obj:
-            return ['slug','resized_image']
+            return ['slug',]
         else:
             return []
 

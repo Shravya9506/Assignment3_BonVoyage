@@ -37,4 +37,10 @@ class CustomerFavoriteVacation(models.Model):
     customer =models.ForeignKey(Customer, on_delete=models.DO_NOTHING, related_name='customer')
     trip = models.ForeignKey(Trip, on_delete=models.DO_NOTHING, related_name='trip')
 
+    class Meta:
+        unique_together = (('customer', 'trip'),)
+
+    def __str__(self):
+        return self.customer.user.username + " likes " + self.trip.name
+
 
