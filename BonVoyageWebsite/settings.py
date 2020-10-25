@@ -39,8 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'vacations.apps.VacationsConfig',
     'users.apps.UsersConfig',
-    'bonvoyage.apps.BonvoyageConfig',
-    'django_extensions',
+    'bonvoyage.apps.BonvoyageConfig'
 ]
 
 
@@ -139,8 +138,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 
 AUTH_USER_MODEL = 'users.User'
-
-LOGIN_REDIRECT_URL = '/shop/home/'
 LOGOUT_REDIRECT_URL = '/'
 
 EMAIL_HOST = 'smtp.gmail.com'
