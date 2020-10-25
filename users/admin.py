@@ -32,11 +32,6 @@ class CustomerAdmin(admin.ModelAdmin):
         except ObjectDoesNotExist:
             return 'ERROR!!'
 
-    def phone(self, instance):
-        try:
-            return instance.user.phone
-        except ObjectDoesNotExist:
-            return 'ERROR!!'
 
 class CustomerFavoritesList(admin.ModelAdmin):
     list_display = ('id', 'customer_username', 'trip_name')
