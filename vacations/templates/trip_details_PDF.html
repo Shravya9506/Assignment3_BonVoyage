@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+<div  class="vacation-details-container">
+    <div class="p-5">
+            <h3> {{ trip.vacation.name }} </h3>
+            <h6> Trip from {{ trip.source}} to {{ trip.vacation.destination}} </h6>
+            <div class="h-divider"></div>
+            <div class="row mt-5">
+                <div class="col-7">
+                    <img class="card-img-top" src="{% if trip.vacation.destination_image %}{{ trip.vacation.destination_image.url }}{% endif %}" alt="Card image">
+                </div>
+                <div class="col-1"></div>
+                <div class="col-4">
+                    MODE OF TRANSPORT:
+                    <div class="row mb-2">
+                        {% if trip.mode_of_transport == 'FL' %}
+                        <i class="fas fa-plane"></i>
+                        {% elif trip.mode_of_transport == 'TR' %}
+                        <i class="fas fa-train"></i>
+                        {% elif trip.mode_of_transport == 'BU' %}
+                        <i class="fas fa-bus"></i>
+                        {% else %}
+                        <i class="fas fa-plane"></i>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-7">
+                    <h5>TRIP DESCRIPTION:</h5>
+                    <h7>{{ trip.trip_description }}</h7>
+                </div>
+                 <div class="col-1"></div>
+                <div class="col-4">
+                    <div class="h-divider mb-3"></div>
+                    <div class="row">
+                        {{ trip.start_date }} - {{ trip.end_date }}
+                    </div>
+            </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-7">
+                    <h5>Benefits:</h5>
+                    <p>{{ trip.additional_benefits}}</p>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-4">
+                    <div class="h-divider mb-3"></div>
+                    <div class="row">
+                    <div class="col-8">
+                            <div class="row"><h5>Price*</h5></div>
+                            <div class="row"><h6>${{ trip.price }}</h6></div>
+                    </div>
+                    <div class="col-4">
+                        <div class="vacation-days">
+                            <div class="row days ml-3 text-white"><h4>{{diff}}</h4></div>
+                            <div class="row days ml-3 text-white">days</div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        <div class="h-divider"></div>
+        <p>*Price including taxes.</p>
+        <p>Please contact our team using the contact details provided on the website to know about customer loyalty discounts and offers.</p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,10 +1,11 @@
 from django.db import models
 
 
-class Messages(models.Model):
-    sender_name = models.CharField(max_length=60, verbose_name='Vacation name')
+class Message(models.Model):
+    sender_name = models.CharField(max_length=60)
     email = models.EmailField()
+    phone = models.CharField(max_length=12, null= True)
     message = models.TextField()
 
     def __str__(self):
-        return self.name + self.message
+        return self.sender_name + self.message

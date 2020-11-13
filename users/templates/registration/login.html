@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Log In{% endblock title %}
+{%load static %}
+{% block content %}
+<div class="full-screen-height">
+    <div class="row m-5">
+    <div class="col-sm-6">
+<h3 class="text-center mb-5">Login form</h3>
+
+<form method="post" class="login-form-container">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="mb-2">
+    <button class="btn-sm btn-primary w-25" type="submit">Log In</button>
+        </div>
+    <p id="password-reset-link"><a href="{% url 'users:password_reset_form' %}">Forgotten your  password?</a></p>
+</form>
+        </div>
+    <div class="v-divider col-sm-5">
+        <img class="w-75 login-image" src={% static "img/background.jpg" %} alt="login-image">
+    </div>
+</div>
+    </div>
+{% endblock content %}

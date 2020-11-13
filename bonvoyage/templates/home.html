@@ -6,7 +6,7 @@
 
 {% block content %}
 <div>
-  <div id="myCarousel" class="carousel slide w-50 h-50 ml-auto mr-auto" data-ride="carousel">
+  <div id="myCarousel" class="carousel slide vacations-carousel" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -14,21 +14,21 @@
   </ol>
   <div class="carousel-inner w-100 h-100 text-center" role="listbox">
     <div class="carousel-item active w-100 h-100">
-      <img class="img-fluid" src={% static "img/fall_colors.jpg" %} alt="First slide">
+      <img class="img-fluid" src="{% static 'img/fall_colors.jpg' %}" alt="First slide">
         <div class="carousel-caption">
           <h3>Enjoy the rainbow colors on land, watch out for fall colors</h3>
           <p>@ Alabama, USA</p>
         </div>
     </div>
     <div class="carousel-item w-100 h-100">
-      <img class="img-fluid" src={% static "img/snow_mountains.jpg" %} alt="Second slide">
+      <img class="img-fluid" src="{% static 'img/snow_mountains.jpg' %}" alt="Second slide">
         <div class="carousel-caption">
           <h3>Make the most of winter with skiing on the Burke Mountain</h3>
           <p>@Vermont, USA</p>
         </div>
     </div>
     <div class="carousel-item w-100 h-100">
-      <img class="img-fluid" src={% static "img/scuba_diving.jpg" %} alt="Third slide">
+      <img class="img-fluid" src="{% static 'img/scuba_diving.jpg' %}" alt="Third slide">
         <div class="carousel-caption">
           <h3>Get ready to deep dive and explore the third largest coral reef in the world</h3>
           <p>@ Florida, USA</p>
@@ -44,12 +44,17 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-  <div>
-      <span class="card-title">Vacations</span>
-    <div class="d-flex justify-content-around">
+  <div class="w-75 ml-auto mr-auto mt-5 mb-5">
+      <h3 class="home_title mb-4">Find your next destination</h3>
+    <div class="row">
         {% for vacation in vacations %}
-          <div>
-            <img class="vacation-image img-fluid" src="{% if vacation.destination_image %}{{ vacation.destination_image.url }}{% endif %}">
+          <div class="vacation-image card img-fluid mr-2">
+            <a href="{% url 'vacations:vacation_details' pk=vacation.id %}">
+              <img class="card-img-top image-opacity" src="{% if vacation.destination_image %}{{ vacation.destination_image.url }}{% endif %}">
+            <div class="card-img-overlay">
+              <h4 class="card-title text-white text-center mt-5">{{ vacation.destination }}</h4>
+            </div>
+            </a>
           </div>
         {% endfor %}
       </div>

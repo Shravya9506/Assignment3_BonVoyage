@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,16 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'vacations.apps.VacationsConfig',
     'users.apps.UsersConfig',
-    'bonvoyage.apps.BonvoyageConfig'
+    'bonvoyage.apps.BonvoyageConfig',
+    'django_filters'
 ]
-
-
-# Replace 'user' with your gmail account name for django apps
-# replace 'password' with the password for your gmail account for django apps
-EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_HOST_USER = 'user'
-EMAIL_HOST_PASSWORD = 'password'
-EMAIL_PORT = '2525'
 
 
 MIDDLEWARE = [
@@ -66,7 +58,7 @@ ROOT_URLCONF = 'BonVoyageWebsite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'users/templates'),os.path.join(BASE_DIR, 'bonvoyage/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,12 +126,17 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'bonvoyage/static/')
 
 
 AUTH_USER_MODEL = 'users.User'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
+
+
+# Replace 'user' with your gmail account name for django apps
+# replace 'password' with the password for your gmail account for django apps
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'djangotest101'
 EMAIL_HOST_PASSWORD = 'Web_39000'

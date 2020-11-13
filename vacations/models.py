@@ -71,11 +71,7 @@ class Vacation(AutoSlugifyOnSaveModel):
         index_together = (('id', 'slug'),)
 
     def __str__(self):
-        return self.name
-
-    # def get_absolute_url(self):
-    #         return reverse('bonvoyage:vacation_detail',
-    #                        args=[self.id, self.slug])
+        return self.destination
 
 class Trip(AutoSlugifyOnSaveModel):
     vacation = models.ForeignKey(
@@ -97,7 +93,7 @@ class Trip(AutoSlugifyOnSaveModel):
     start_date = models.DateField()
     end_date = models.DateField()
     price = models.DecimalField(max_digits=6, decimal_places=2, verbose_name='Price ($)')
-    additional_benefits = models.CharField(max_length=200)
+    additional_benefits = models.TextField()
     trip_description = models.TextField()
 
     class Meta:
@@ -106,7 +102,3 @@ class Trip(AutoSlugifyOnSaveModel):
 
     def __str__(self):
         return self.name
-
-    # def get_absolute_url(self):
-    #         return reverse('bonvoyage:trip_detail',
-    #                        args=[self.id, self.slug])

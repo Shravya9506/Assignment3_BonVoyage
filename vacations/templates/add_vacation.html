@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="headings">Add a New Vacation</h1>
+    <form method="POST" class="custom-form" enctype="multipart/form-data">
+        {% csrf_token %}
+          {{ form.as_p }}
+        <div class="buttons-container">
+            <button type="submit" class="save btn btn-primary">Save</button>
+        </div>
+    </form>
+{% endblock %}
+
+</html>

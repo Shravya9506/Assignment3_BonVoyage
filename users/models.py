@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from vacations.models import Trip
+from vacations.models import Vacation
 
 
 class User(AbstractUser):
@@ -27,12 +27,12 @@ class Customer(models.Model):
 
 class CustomerFavoriteVacation(models.Model):
     customer =models.ForeignKey(Customer, on_delete=models.DO_NOTHING, related_name='customer')
-    trip = models.ForeignKey(Trip, on_delete=models.DO_NOTHING, related_name='trip')
+    vacation = models.ForeignKey(Vacation, on_delete=models.DO_NOTHING, related_name='trip', null=True)
 
     class Meta:
-        unique_together = (('customer', 'trip'),)
+        unique_together = (('customer', 'vacation'),)
 
     def __str__(self):
-        return self.customer.user.username + " likes " + self.trip.name
+        return self.customer.user.username + " likes " + self.vacation.name
 
 

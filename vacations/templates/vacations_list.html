@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+{% extends 'base.html' %}
+{%load static %}
+{% block title %}Vacations list{% endblock title %}
+
+{% block content %}
+{% if user.is_authenticated and not user.is_staff %}
+<div class="row">
+    <div class="col-sm-12 text-end">
+Show only favorites
+    <label class="switch">
+        {% if favorites %}
+            <input type="checkbox" name="favorites_checkbox" checked onclick="showHideFavorites()">
+        {% else %}
+            <input type="checkbox" name="favorites_checkbox" onclick="showHideFavorites()">
+        {% endif %}
+
+  <span class="slider round"></span>
+    </label>
+        <a href="{% url 'vacations:favorites_vacation_list' showFavorites=1 %}" id="favorites_checked" hidden></a>
+        <a href="{% url 'vacations:vacation_list' %}" id="favorites_unchecked" hidden></a>
+        </div>
+</div>
+{% endif %}
+<div class="row">
+<div class="vacation_filters_containers col-sm-4">
+    <form method="GET" class="filter-form ml-5 pt-5 mb-5" id="vacation-filter">
+        <span><b>Filters : </b></span>
+        <div class="filter-container">
+            {{ vacation_filter.form.as_p }}
+            {{trip_filter.form.as_p}}
+            <input type="submit" value="Filter" class="btn btn-primary"/>
+            <input  type="submit" value="Clear" class="btn btn-default" onclick="resetform()">
+        </div>
+    </form>
+
+</div>
+<div class="col-sm-7">
+    {% if user.is_staff %}
+    <div class="card vacation_card float-left ml-3 mr-3 mt-5 mb-5">
+        <a href='{% url "vacations:add_vacation" %}'>
+                <img class="card-img-top" src="{% static 'img/add_vacation_image.png' %}" alt="Card image" style="width:100%">
+        </a>
+            <div class="card-body">
+                Add a vacation
+            </div>
+        </div>
+    {% endif %}
+    {% for vacation in vacations %}
+        <div class="card vacation_card float-left ml-3 mr-3 mt-5 mb-5">
+            <img class="card-img-top" src="{% if vacation.destination_image %}{{ vacation.destination_image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" alt="Card image" style="">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8">
+                      <h6 class="card-title">{{ vacation.name }}</h6>
+                      <p class="card-text">{{ vacation.destination }}</p>
+                    </div>
+                    <div class="col-4">
+                      <a href="{% url 'vacations:vacation_details' pk=vacation.id %}" class="btn btn-primary stretched-link mt-3">More info</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+    </div>
+<script>
+    function resetform() {
+        price_min_filter = document.getElementById('id_price_0');
+        price_min_filter.value = '';
+        price_max_filter = document.getElementById('id_price_1');
+        price_max_filter.value = '';
+        $('input:checkbox[name=destination]').attr('checked',false);
+        $('input:checkbox[name=name]').attr('checked',false)
+        source_filter = document.getElementById('id_source');
+        source_filter.value = '';
+    }
+
+    function showHideFavorites(){
+        debugger;
+        if ($('input:checkbox[name=favorites_checkbox]').is(':checked')) {
+            $('#favorites_checked')[0].click();
+        }
+        else
+            $('#favorites_unchecked')[0].click();
+    }
+</script>
+{% endblock content %}
+</html>

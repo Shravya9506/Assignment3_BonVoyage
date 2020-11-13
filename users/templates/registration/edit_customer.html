@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% block content %}
+    <h3 class="headings">Edit your details</h3>
+    <form method="POST" class="custom-form">{% csrf_token %}
+        {{ form.as_p }}
+         <p>
+  <label for="marital_status">Marital status</label>
+  <select name="marital_status" id="marital_status">
+    <option value="" selected></option>
+<option value="UM">Unmarried</option>
+<option value="MA" >Married</option>
+  </select>
+    </p>
+        <div class="buttons-container">
+            <button type="submit" class="save btn btn-primary">Update</button>
+        </div>
+    </form>
+{% endblock %}
+</html>

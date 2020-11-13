@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en">
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="full-screen-height">
+<h3>PDF</h3>
+<p tyle="font-family: cursive;color: darkred">Thank you for your interest. We have emailed you an e-copy of the trip borchure. Please take a look and let us know if you are interested in the trip. You can call or message us. Our contact details.</p>
+<a href="{% url "vacations:vacation_list" %}" class="btn btn-primary stretched-link mt-3">Vacations list</a>
+</div>
+{% endblock content %}
+</html>

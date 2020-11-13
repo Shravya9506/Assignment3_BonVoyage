@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+{% extends 'base.html' %}
+{%load static %}
+{% block title %}Vacation details{% endblock title %}
+
+{% block content %}
+<div  class="vacation-details-container">
+        <div class="row">
+                <div class="col-sm-8">
+                    <h3> {{ trip.vacation.name }} </h3>
+                    <h6> Trip from {{ trip.source}} to {{ trip.vacation.destination}} </h6>
+                </div>
+             <div class="col-sm-4">
+                 {% if user.is_staff %}
+                    <a href="{% url 'vacations:edit_trip' pk=trip.id %}" class="btn btn-primary btn-sm">Edit trip</a>
+                    <a href="{% url 'vacations:delete_trip' pk=trip.id %}" class="btn btn-danger btn-sm">Delete trip<i class="fas fa-trash-alt"></i></a>
+                 {% else %}
+                    <a href="{% url 'vacations:trip_details_pdf' pk=trip.id %}" class="btn btn-primary btn-sm">Send me more info <i class="far fa-file-pdf"></i></a>
+                 {% endif%}
+             </div>
+        </div>
+            <div class="h-divider"></div>
+            <div class="row mt-5">
+                <div class="col-sm-7">
+                    <img class="card-img-top" src="{% if trip.vacation.destination_image %}{{ trip.vacation.destination_image.url }}{% endif %}" alt="Card image">
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4">
+                    <h5>MODE OF TRANSPORT:</h5>
+                    <div class="mb-2"> {{trip.source}} --
+                        {% if trip.mode_of_transport == 'FL' %}
+                        <i class="fas fa-plane"></i>
+                        {% elif trip.mode_of_transport == 'TR' %}
+                        <i class="fas fa-train"></i>
+                        {% elif trip.mode_of_transport == 'BU' %}
+                        <i class="fas fa-bus"></i>
+                        {% else %}
+                        <i class="fas fa-plane"></i>
+                        {% endif %} -- {{trip.vacation.destination}}
+                    </div>
+                    <div class="mb-2"> You will receive the ticket details for travel once you contact our team and pay for the trip.</div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-sm-7">
+                    <h5>TRIP DESCRIPTION:</h5>
+                    <p>{{ trip.trip_description }}</p>
+                </div>
+                 <div class="col-sm-1"></div>
+                <div class="col-sm-4">
+                    <div class="h-divider mb-3"></div>
+                    <h5>PACK YOUR BAGS FOR:</h5>
+                        {{ trip.start_date }} - {{ trip.end_date }}
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-sm-7">
+                    <h5>BENEFITS:</h5>
+                    <p>{{ trip.additional_benefits}}</p>
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4">
+                    <div class="h-divider mb-3"></div>
+                    <div class="row">
+                        <div class="col-sm-8">
+                                <h5>PRICE*</h5>
+                                <h6>${{ trip.price }}</h6>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="vacation-days">
+                                <div class="days ml-3 text-white text-center"><h4>{{diff}}</h4></div>
+                                <div class="days ml-3 text-white text-center">days</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="h-divider"></div>
+        <p>*Price including taxes.</p>
+        <p>Please contact our team using the contact details provided on the website to know about customer loyalty discounts and offers.</p>
+</div>
+{% endblock content %}
+</html>

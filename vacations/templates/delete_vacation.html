@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% block content %}
+<div class="full-screen-height">
+    <h1 class='headings' >Delete vacation</h1>
+    <form method="post" class="custom-form">
+        {% csrf_token %}
+        <h3>Are you sure you want to delete the vacation : <b>{{ vacation.name }}</b></h3>
+        <h5><span class="glyphicon glyphicon-warning-sign"></span> Attention !!! This action cannot be undone and you will lose the data forever!</h5>
+        <div class="buttons-container">
+            <input type="submit" class="btn btn-danger" value="Delete">
+            <a href="{% url 'vacations:vacation_details' pk=vacation.id}" class="btn btn-default">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+</html>

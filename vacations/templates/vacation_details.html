@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+{% extends 'base.html' %}
+{%load static %}
+{% block title %}Vacation details{% endblock title %}
+
+{% block content %}
+<div class="vacation-details-container">
+        {% for vacation_details in vacation %}
+            <div class="row">
+                <div class="col-sm-7">
+                    <h3> {{ vacation_details.name }} </h3>
+                    <h6> {{ vacation_details.destination}} </h6>
+                </div>
+                <div class="col-sm-5 text-center">
+                    {% if user.is_staff %}
+                        <a href="{% url 'vacations:edit_vacation' pk=vacation_details.id %}" class="btn btn-primary btn-sm">Edit vacation</a>
+                       <a href="{% url 'vacations:delete_vacation' pk=vacation_details.id %}" class="btn btn-danger btn-sm">Delete vacation</i></a>
+                    {% else %}
+                        {% if not is_favorite %}
+                            <a href="{% url 'users:mark_as_favorite' pk=vacation_details.pk %}" class="favorite-icon"><i class="far fa-heart fa-2x"></i></a>
+                        {% else %}
+                            <a href="{% url 'users:unmark_as_favorite' pk=vacation_details.pk %}" class="favorite-icon"><i class="fas fa-heart fa-2x"></i></a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="h-divider"></div>
+            <div class="row mt-5">
+                <div class="col-sm-7">
+                    <img class="card-img-top" src="{% if vacation_details.destination_image %}{{ vacation_details.destination_image.url }}{% else %}{% static 'img/no_image.png'%}{% endif %}" alt="Card image">
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4">
+                        <div class="mb-2">
+                            <h5>TRIPS:</h5>
+                            {% if user.is_staff %}
+                                {% if trips.count > 0%}
+                                    <p><b>Trip(s) for this vacation is/are available from:</b></p>
+                                {% else %}
+                                    <p><b>No trip have been added yet.</b></p>
+                                {% endif %}
+                            {% else %}
+                                {% if trips.count > 0%}
+                                    <p><b>We provide trips from various locations across USA for most of our vacation plans.
+                                    Trip(s) for this vacation is/are available from:</b></p>
+                                    {% else %}
+                                    <p><b>We have no trips of this vacation planned yet.
+                                        You will find the trips on this page once we add them. Please keep visiting.<br/><br/>
+                                        We apologize for any inconvenience caused.
+                                        Please leave us a message if you need any information.</b></p>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                        {% for trip in trips%}
+                            <div class="mb-2">
+                                <div class="col-sm-5">
+                                <i class="fas fa-map-pin mt-2"><span class="ml-2">{{ trip.source }}</span></i>
+                                    </div>
+                                <div class="col-sm-5">
+                                        <a href="{% url 'vacations:trip_details' pk=trip.id %}" class="btn btn-primary btn-sm">View trip</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                         {% if user.is_staff %}
+                            <div class="h-divider mb-3"></div>
+                             <a href="{% url 'vacations:add_trip' %}" class="btn btn-primary btn-sm">Add trip</a>
+                        {% endif %}
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-sm-7">
+                    <h5>DESCRIPTION:</h5>
+                    <h7>{{ vacation_details.description}}</h7>
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4">
+                    <div class="h-divider mb-3"></div>
+                    <div class="col-sm-8">
+                        {% if price_range.price__min != price_range.price__max %}
+                            <div class="row"><h5>PRICE RANGE*</h5></div>
+                            <div class="row"><h6>${{ price_range.price__min }} - ${{ price_range.price__max}}</h6></div>
+                        {% else %}
+                            <div class="row"><h5>PRICE*</h5></div>
+                            <div class="row"><h6>{% if price_range.price__min %}${{ price_range.price__min }}{% else %} - {% endif %}</h6></div>
+                        {% endif%}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    <div class="h-divider mt-5"></div>
+    <p>*Price range is decided based on the starting point of the trip</p>
+</div>
+{% endblock content %}
+</html>
