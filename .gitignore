@@ -10,4 +10,6 @@ db.sqlite3
 /lib/
 /.idea/.gitignore
 venv
-
+/virtualEnv/
+virtualEnv
+virtualEnv/lib
