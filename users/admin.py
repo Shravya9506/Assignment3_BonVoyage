@@ -44,7 +44,7 @@ class CustomerFavoriteVacationExportCsvMixin:
 class UserExportCsvMixin:
     def export_as_csv(self, request, queryset):
         # Specify the header field names
-        field_names = ['User Id', 'Name', 'Username', 'Email', 'Is admin']
+        field_names = ['User Id', 'Name', 'Username', 'Email', 'Is admin', 'Is customer']
         response = HttpResponse(content_type='text/csv')
         # Specify the filename
         response['Content-Disposition'] = 'attachment; filename=Users_report.csv'
@@ -52,7 +52,8 @@ class UserExportCsvMixin:
         writer.writerow(field_names)
         for user in queryset:
             writer.writerow([user.id, user.first_name + " " + user.last_name,
-                             user.username, user.email, "True" if user.is_superuser else "False"])
+                             user.username, user.email, "True" if user.is_superuser else "False",
+                             "True" if user.is_customer else "False"])
 
         return response
 
