@@ -5,3 +5,4 @@ django-filter
 weasyprint
 django-heroku
 psycopg2==2.8.4
+gunicorn
