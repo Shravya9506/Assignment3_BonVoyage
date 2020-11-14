@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+{% extends 'base.html' %}
+{%load static %}
+{% block title %}Contact us{% endblock title %}
+
+{% block content %}
+<div class="full-screen-height">
+<h3 class="text-center mb-5">Messages received</h3>
+    <table class="table table-borderless table-sm">
+        <thead>
+        <tr class="table-info">
+            <th>Sender name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Message</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for message in messages%}
+                <tr>
+                    <td> {{ message.sender_name }}</td>
+                    <td> {{ message.email }}</td>
+                    <td> {{ message.phone }}</td>
+                    <td> {{ message.message }}</td>
+                </tr>
+            {% endfor%}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
+</html>
+
+

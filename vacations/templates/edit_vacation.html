@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% extends 'base.html' %}
+{% block title %}Edit vacation{% endblock title %}
 {% block content %}
     <h1 class="headings">Edit vacation</h1>
     <form method="POST" class="custom-form">{% csrf_token %}

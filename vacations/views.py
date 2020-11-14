@@ -121,8 +121,8 @@ def trip_details_pdf(request, pk):
     # create invoice e-mail
     subject = 'Brochure of the trip - {}'.format(trip.name)
     message = 'Hello {},\n' \
-              ' Please find the attachment for the e-copy of the trip details you requested for. \n' \
-              ' Contact us in case you need assistance of any sort, our team is happy to assist you. \n' \
+              'Please find the attachment for the e-copy of the trip details you requested for. \n' \
+              'Contact us in case you need assistance of any sort, our team is happy to assist you. \n' \
               'If you are interested in taking this trip, please contact us on the our details mentioned in the website. \n \n \n' \
               'Team Bonvoyage'.format(request.user.first_name+ " " + request.user.last_name)
     email = EmailMessage(subject,

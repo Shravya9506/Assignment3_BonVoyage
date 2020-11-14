@@ -373,4 +373,8 @@ input:checked + .slider:before {
     .v-divider{
         display: none;
     }
+
+    table{
+        font-size: 2vw;
+    }
 }

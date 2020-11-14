@@ -5,10 +5,8 @@ from django.template.context_processors import csrf
 from django.utils import timezone
 from .models import *
 from .forms import *
-from django.contrib import messages
-from django.contrib.auth import update_session_auth_hash
 now = timezone.now()
-
+from django.contrib.admin.views.decorators import staff_member_required
 
 def register_customer(request):
     if request.method == 'POST':
@@ -53,4 +51,9 @@ def unmark_as_favorite(request, pk):
     vacation = get_object_or_404(Vacation, id=pk)
     CustomerFavoriteVacation.objects.filter(customer = customer, vacation = vacation).delete()
     return redirect('vacations:vacation_details' , pk=pk)
+
+@staff_member_required
+def view_customerFavorites(request):
+    customerFavoriteVacations = CustomerFavoriteVacation.objects.all()
+    return render(request, 'favorites_list.html', {'customerFavoriteVacations' :customerFavoriteVacations})
 

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+{% extends 'base.html' %}
+{%load static %}
+{% block title %}Customer favorites{% endblock title %}
+
+{% block content %}
+<div class="full-screen-height">
+<h3 class="text-center mb-5">Vacation marked as favorite by customers</h3>
+    <table class="table table-borderless table-sm">
+        <thead>
+        <tr class="table-info">
+            <th>Customer Name</th>
+            <th>Favorite vacation destination</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for favorite in customerFavoriteVacations%}
+                <tr>
+                    <td> {{ favorite.customer.user.first_name }} {{ favorite.user.customer.last_name }} </td>
+                    <td> {{favorite.vacation.destination}} </td>
+                </tr>
+            {% endfor%}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
+</html>
+
+

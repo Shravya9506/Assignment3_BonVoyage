@@ -19,4 +19,5 @@ urlpatterns = [
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'), name='password_reset_complete'),
     path('mark_as_favorite/<int:pk>', views.mark_as_favorite, name='mark_as_favorite'),
     path('unmark_as_favorite/<int:pk>', views.unmark_as_favorite, name='unmark_as_favorite'),
+    path('customer_favorites_list/', views.view_customerFavorites, name='view_customerFavorites'),
 ]

@@ -8,6 +8,7 @@ urlpatterns = [
     path('message/', views.message, name='message'),
     path('about_us/', views.about_us, name='about_us'),
     path('contact_us/', views.contact_us, name='contact_us'),
+    path('messages_list/', views.view_messages, name='view_messages'),
 ]
 
 if settings.DEBUG:

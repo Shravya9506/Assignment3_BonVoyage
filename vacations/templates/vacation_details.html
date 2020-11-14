@@ -12,7 +12,7 @@
                     <h3> {{ vacation_details.name }} </h3>
                     <h6> {{ vacation_details.destination}} </h6>
                 </div>
-                <div class="col-sm-5 text-center">
+                <div class="col-sm-5 text-end">
                     {% if user.is_staff %}
                         <a href="{% url 'vacations:edit_vacation' pk=vacation_details.id %}" class="btn btn-primary btn-sm">Edit vacation</a>
                        <a href="{% url 'vacations:delete_vacation' pk=vacation_details.id %}" class="btn btn-danger btn-sm">Delete vacation</i></a>
@@ -53,7 +53,7 @@
                             {% endif %}
                         </div>
                         {% for trip in trips%}
-                            <div class="mb-2">
+                            <div class="row mb-2">
                                 <div class="col-sm-5">
                                 <i class="fas fa-map-pin mt-2"><span class="ml-2">{{ trip.source }}</span></i>
                                     </div>
