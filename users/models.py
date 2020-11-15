@@ -26,8 +26,8 @@ class Customer(models.Model):
 
 
 class CustomerFavoriteVacation(models.Model):
-    customer =models.ForeignKey(Customer, on_delete=models.DO_NOTHING, related_name='customer')
-    vacation = models.ForeignKey(Vacation, on_delete=models.DO_NOTHING, related_name='trip', null=True)
+    customer =models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='customer')
+    vacation = models.ForeignKey(Vacation, on_delete=models.CASCADE, related_name='trip', null=True)
 
     class Meta:
         unique_together = (('customer', 'vacation'),)
