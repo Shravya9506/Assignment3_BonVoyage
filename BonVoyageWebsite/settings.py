@@ -144,9 +144,12 @@ LOGOUT_REDIRECT_URL = '/'
 
 # Replace 'user' with your gmail account name for django apps
 # replace 'password' with the password for your gmail account for django apps
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'djangotest101'
-EMAIL_HOST_PASSWORD = 'Web_39000'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+#EMAIL_HOST_PASSWORD = 'Web_39000'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 SERVER_EMAIL = 'root@gmail.com'
