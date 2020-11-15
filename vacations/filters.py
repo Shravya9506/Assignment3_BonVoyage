@@ -17,16 +17,12 @@ class VacationFilter(django_filters.FilterSet):
         fields = ['destination']
 
 
-class RangeWidget(forms.DateInput):
-    input_type = 'date'
-
 
 class TripFilter(django_filters.FilterSet):
     name = django_filters.ModelMultipleChoiceFilter(queryset=Trip.objects.all(),
                                                            widget=forms.CheckboxSelectMultiple,
                                                            label="Trip Name")
     source = CharFilter(field_name='source', lookup_expr='icontains', label='Starting from (City)')
-    price = RangeFilter(label='Price range')
     class Meta:
         model = Trip
-        fields = {'name', 'price'}
+        fields = {'name'}
