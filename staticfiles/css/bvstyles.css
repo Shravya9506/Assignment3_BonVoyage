@@ -1,0 +1,381 @@
+.navbar {
+  background-color: #17a2b8;
+}
+
+.full-screen-height {
+    height: 26vw;
+}
+
+.user-actions-dropdown{
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.user-actions-dropdown li{
+    width: 100%;
+}
+
+.home_title{
+  color: #23424A;
+}
+
+.vacation-image{
+  max-height: 250px !important;
+  max-width: 250px !important;
+}
+
+.image-opacity{
+  opacity: 0.8;
+}
+
+.vacation_card{
+  width: 350px;
+  margin-bottom: 3rem!important;
+  margin-top: 3rem!important;
+  margin-left: 1rem!important;
+  margin-right: 1rem!important;
+}
+
+.btn-primary{
+    background-color: #17a2b8 !important;
+    border-color: #17a2b8 !important;
+}
+
+.vacation-details-container{
+  background-color: #EBF4F7;
+  color: #23424A;
+  width:50%;
+  margin-top: 3rem!important;
+  margin-bottom: 3rem!important;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3rem!important;
+}
+
+.h-divider{
+  margin-top:5px;
+ margin-bottom:5px;
+ height:1px;
+ width:100%;
+ border-top:1px solid #17a2b8;
+}
+
+.v-divider{
+ margin-left:5px;
+ margin-right:5px;
+ width:1px;
+ height:100%;
+ border-left:1px solid black;
+}
+
+.vacation-days{
+  background-color: #23424A;
+      z-index: 9;
+}
+
+.days:after{
+  content:'';
+  color: white;
+}
+
+form.login-form-container p, form.login-form-container div{
+    text-align: center !important;
+}
+
+.custom-form {
+    padding: 20px;
+    border: 2px solid;
+    border-radius: 15px;
+    background-color: #f9f9f9;
+    margin-bottom: 100px;
+}
+
+.no-bottom-margin{
+    margin-bottom: 0px;
+    border: 0px;
+    background-color: #17a2b8;
+}
+
+.headings {
+    text-align: center !important;
+    margin: 20px 0px !important;
+}
+
+.custom-form p label {
+    width: 15%;
+    float: none !important;
+}
+
+.custom-form p input {
+    float: none !important;
+    background-color: white;
+    border: 1px solid;
+}
+
+.custom-form input,select {
+    height: 35px;
+    width: 200px;
+}
+
+.custom-form p span  {
+    display: block;
+    margin-left: 15%;
+}
+.custom-form ul {
+    margin-left: 13%;
+}
+
+.favorite-icon{
+    color: #17a2b8 !important;
+}
+
+footer{
+    background-color: #17a2b8;
+}
+
+.footer_heading{
+    text-decoration: underline;
+}
+
+footer div span h7{
+    height : 33.3%;
+}
+
+.text-end{
+    text-align: end;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.about-us-heading{
+    font-size: 22px;
+    font-family: cursive;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.about-us-text{
+    font-size: 15px;
+    font-family: cursive;
+}
+
+.filter-form{
+    padding-top: 3rem!important;
+    margin-left: 3rem!important;
+    margin-bottom: 3rem!important;
+}
+
+.filter-container{
+    padding-top: 3rem!important;
+}
+
+.vacation-list-img{
+    width:100%;
+    height:218px;
+}
+
+.vacations-carousel{
+    width: 50%;
+    height: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media only screen
+    and (device-width : 375px)
+    and (device-height : 812px)
+    and (-webkit-device-pixel-ratio : 3) {
+
+    .vacations-carousel{
+        width: 100%;
+        height: 100%;
+    }
+    h3{
+        font-size: 3vw;
+    }
+    h5{
+        font-size: 2.5vw;
+    }
+    h6{
+        font-size: 2vw;
+    }
+
+    .h6{
+         font-size: 2vw;
+    }
+    .h3{
+        font-size: 3vw;
+        font-weight: bold;
+    }
+
+    p{
+        font-size: 2vw;
+        margin-bottom: 0;
+    }
+
+    .vacation-details-container{
+      background-color: #EBF4F7;
+      color: #23424A;
+      width:100%;
+      margin-top: 0 !important;
+      margin-bottom:0!important;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 1rem!important;
+      font-size: 2vw;
+    }
+
+    .btn-primary{
+        background-color: #17a2b8 !important;
+        border-color: #17a2b8 !important;
+        font-size: 2vw;
+    }
+
+    .btn-danger, .btn-default{
+        font-size: 2vw;
+    }
+
+    ul#id_destination , ul#id_name{
+        font-size: xx-small;
+    }
+
+    .text-end {
+        text-align: end;
+        font-size: 2vw;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 12px;
+        width: 12px;
+        left: 1px;
+            top: 0px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .1ms;
+    }
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 26px;
+        height: 12px;
+    }
+
+
+    .filter-form{
+        padding-top: 0!important;
+        margin-left: 0!important;
+        margin-bottom: 0!important;
+    }
+
+    .filter-container{
+        padding-top: 0!important;
+    }
+    span{
+        font-size: 2.5vw;
+    }
+    .vacation-list-img{
+        width:100%;
+        height:150px;
+    }
+    .vacation_card {
+        width: 250px;
+        margin-bottom: 1rem!important;
+        margin-top: 1rem!important;
+        margin-left: 1rem!important;
+        margin-right: 1rem!important;
+    }
+    .no-bottom-margin{
+        font-size: xx-small;
+    }
+
+    .custom-form input, select {
+        height: 20px;
+        width: 150px;
+    }
+
+    .custom-form{
+        margin-bottom: 20px;
+    }
+    h1{
+        font-size: 3vw;
+    }
+    .full-screen-height{
+        height: 81vw;
+    }
+
+    .custom-form ul{
+        font-size: 2vw;
+    }
+
+    .login-image{
+        display: none;
+    }
+
+    .v-divider{
+        display: none;
+    }
+
+    table{
+        font-size: 2vw;
+    }
+}
