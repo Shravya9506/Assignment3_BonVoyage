@@ -15,6 +15,7 @@
             <th>Phone</th>
             <th>Message</th>
             <th>Action taken</th>
+            <th>Take action</th>
         </tr>
         </thead>
         <tbody>
@@ -25,6 +26,7 @@
                     <td> {{ message.phone }}</td>
                     <td> {{ message.message }}</td>
                     <td> {% if message.action_taken %} Yes {% else %} No {% endif %}</td>
+                    <td><a href="{% url 'bonvoyage:edit_message' pk=message.id%}">Edit</a></td>
                 </tr>
             {% endfor%}
         </tbody>

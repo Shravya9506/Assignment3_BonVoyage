@@ -11,25 +11,19 @@
             <h6> Trip from {{ trip.source}} to {{ trip.vacation.destination}} </h6>
             <div class="h-divider"></div>
             <div class="row mt-5">
-                <div class="col-sm-7">
-                    <img class="card-img-top" src="{% if trip.vacation.destination_image %}{{ trip.vacation.destination_image.url }}{% endif %}" alt="Card image">
-                </div>
-                <div class="col-sm-1"></div>
-                <div class="col-sm-4">
                     <h5>MODE OF TRANSPORT:</h5>
                     <div class="mb-2"> {{trip.source}} --
                         {% if trip.mode_of_transport == 'FL' %}
-                        <i class="fas fa-plane"></i>
+                        Flight
                         {% elif trip.mode_of_transport == 'TR' %}
-                        <i class="fas fa-train"></i>
+                        Train
                         {% elif trip.mode_of_transport == 'BU' %}
-                        <i class="fas fa-bus"></i>
+                        Bus
                         {% else %}
-                        <i class="fas fa-plane"></i>
+                        Cruise
                         {% endif %} -- {{trip.vacation.destination}}
                     </div>
                     <div class="mb-2"> You will receive the ticket details for travel once you contact our team and pay for the trip.</div>
-                </div>
             </div>
             <div class="row mt-5">
                 <div class="col-sm-7">

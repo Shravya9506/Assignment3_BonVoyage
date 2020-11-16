@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% block title %}Edit message{% endblock title %}
+{% block content %}
+    <h1 class="headings">Edit message</h1>
+    <form method="POST" class="custom-form">{% csrf_token %}
+        {{ form.as_p }}
+        <div class="buttons-container">
+            <button type="submit" class="save btn btn-primary">Update</button>
+        </div>
+    </form>
+{% endblock %}
+</html>

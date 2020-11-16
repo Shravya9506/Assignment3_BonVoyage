@@ -22,6 +22,7 @@ class TripFilter(FilterSet):
                                                            widget=forms.CheckboxSelectMultiple,
                                                            label="Trip Name")
     source = CharFilter(field_name='source', lookup_expr='icontains', label='Starting from (City)')
+    price = RangeFilter(label='Price range')
     class Meta:
         model = Trip
-        fields = {'name'}
+        fields = {'name', 'price'}

@@ -23,8 +23,9 @@ def vacation_list(request, showFavorites = 0):
     trips = trip_filter.qs
     vacationsList = [trip.vacation.id for trip in trips]
     vacations = Vacation.objects.filter(pk__in = vacationsList)
+    vacationIdList = [v.id for v in vacations]
     if showFavorites and not request.user.is_staff:
-        favoriteVacations = [favorites.vacation.id for favorites in CustomerFavoriteVacation.objects.filter(customer__user_id= request.user.id)]
+        favoriteVacations = [favorites.vacation.id for favorites in CustomerFavoriteVacation.objects.filter(customer__user_id= request.user.id, vacation__id__in = vacationIdList)]
         vacations = Vacation.objects.filter(pk__in = favoriteVacations)
     vacation_filter = VacationFilter(request.GET, queryset=vacations)
     vacations = vacation_filter.qs
@@ -109,7 +110,7 @@ def add_trip(request):
             return redirect('vacations:trip_details', pk=trip.id)
     else:
         form = TripForm()
-    return render(request, 'add_vacation.html', {'form': form})
+    return render(request, 'add_trip.html', {'form': form})
 
 
 @login_required
@@ -134,12 +135,11 @@ def trip_details_pdf(request, pk):
                             { 'trip': trip, 'diff' : diff})
     out = BytesIO()
     HTML(string=html,base_url=request.build_absolute_uri()).write_pdf(out,
-                                stylesheets=[CSS(settings.STATIC_ROOT + '/css/trip_details_pdf.css'), \
-                                    CSS('https://use.fontawesome.com/releases/v5.7.0/css/all.css'),\
-                                    CSS('https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css')])
+                                stylesheets=[CSS(settings.STATIC_ROOT + '/css/trip_details_pdf.css')])
     email.attach('Brochure of the {}.pdf'.format(trip.name),
                  out.getvalue(),
                  'application/pdf')
     #send e-mail
     email.send()
     return render(request, 'pdf_sent.html')
+

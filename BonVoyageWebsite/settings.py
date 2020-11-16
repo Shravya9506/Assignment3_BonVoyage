@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'w#c2p$9qpf@+%_f14c9g1%4lm*o0s2ht^*+4mx^77l($)l!1!6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -123,20 +123,17 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'bonvoyage/static/')
 
 
 AUTH_USER_MODEL = 'users.User'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-
-
 # Replace 'user' with your gmail account name for django apps
 # replace 'password' with the password for your gmail account for django apps
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'djangotest101'
-EMAIL_HOST_PASSWORD = 'Web_39000'
+EMAIL_HOST_USER = 'acmeCMS8210@gmail.com'
+EMAIL_HOST_PASSWORD = 'testing@123'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-SERVER_EMAIL = 'root@gmail.com'
